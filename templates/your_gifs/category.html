@@ -1,0 +1,43 @@
+{% extends 'your_gifs/base.html' %}
+{% load staticfiles %}
+
+{% block title_block %}
+    {{ category.name }}
+{% endblock %}
+
+{% block body_block %}
+    <div>
+        {% if category %}
+            <h2>{{ category.name }}</h2>
+            {% if posts %}
+                <ul> {% for post in posts %}
+                        <li>
+                            <div>
+                                <h3>{{ post.title }}</h3>
+                                {% if post.url %}
+                                    <img src="{{ post.url }}">
+                                {% endif %}
+                                {% if post.body %}
+                                    <p>{{ post.body }}</p>
+                                {% endif %}
+
+                            </div>
+                        </li>
+                {% endfor %}</ul>
+            {% else %}
+                No posts currently in category.
+            {% endif %}
+            <br />
+            <br />
+            {% if user.is_authenticated %}
+                <a href="{% url 'add_post' category.slug %}">Add a new Post</a> <br/>
+            {% endif %}
+        {% else %}
+            The specified category does not exist!
+        {% endif %}
+    </div>
+{% endblock %}
+
+{% block footer_block_more %}
+    <li class="nav-item"><a class="nav-link" href="{% url 'add_post' category.slug %}">Add Post</a></li>
+{% endblock %}

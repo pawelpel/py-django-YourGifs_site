@@ -1,0 +1,21 @@
+{% extends 'your_gifs/base.html' %}
+
+{% block title_block %}
+    - Categories
+{% endblock %}
+
+{% block body_block %}
+    <h2> Categories </h2>
+    {% if categories %}
+        <ul>
+        {% for category in categories %}
+            <li><a href="{% url 'show_category' category.slug %}">{{ category.name }}</a> </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        There is no categories yet.
+    {% endif %}
+    {% if user.is_authenticated %}
+                <a href="{% url 'add_category' %}">Add a new Category</a> <br/>
+    {% endif %}
+{% endblock %}
