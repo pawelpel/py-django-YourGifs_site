@@ -1,3 +1,3 @@
 # py-django-YourGifs_site
 
-Site made to practice django framework
+Project made to practice django framework
