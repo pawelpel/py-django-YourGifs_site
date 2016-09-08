@@ -26,7 +26,7 @@
                                            data-toggle="tooltip"
                                            title="{{ p.title }}{% if p.body %} - {{ p.body }}{% endif %}" src="{{ p.url }}"
 
-                                {% if p.video == True %}width="100px" height="100px" autoplay loop></video>
+                                {% if p.video == True %} autoplay loop></video>
                                 {% else %}></img>
                                 {% endif %}
                             </div>
