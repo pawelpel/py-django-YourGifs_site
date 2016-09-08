@@ -5,7 +5,8 @@ from your_gifs.forms import *
 
 
 def index(request):
-    return render(request, 'your_gifs/index.html', context={})
+    context_dict = {'posts': list(Post.objects.all().order_by('creation_date'))}
+    return render(request, 'your_gifs/index.html', context=context_dict)
 
 
 def show_categories(request):
@@ -35,9 +36,10 @@ def add_category(request):
         form = CategoryForm(request.POST)
         if form.is_valid():
             form.save(commit=True)
-            return index(request)
+            return show_categories(request)
         else:
-            print(form.errors)
+            # print(form.errors)
+            pass
     return render(request, 'your_gifs/add_category.html', {'form': form})
 
 
@@ -59,7 +61,8 @@ def add_post(request, category_name_slug):
                 post.save()
                 return show_category(request, category_name_slug)
         else:
-            print(form.errors)
+            # print(form.errors)
+            pass
 
     context_dict = {'form':form, 'category': category}
     return render(request, 'your_gifs/add_post.html', context_dict)

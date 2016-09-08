@@ -3,18 +3,25 @@
 {% block title_block %} - Add Category{% endblock %}
 
 {% block body_block %}
-    <h1>Add a Category</h1>
         <div>
-            <form id="category_form" method="post" action="{% url 'add_category' %}">
+            <form id="category_form" class="form-signin" method="post" action="{% url 'add_category' %}">
+                <h2 class="form-signin-heading">Create a new Category</h2>
                 {% csrf_token %}
                 {% for hidden in form.hidden_fields %}
                     {{ hidden }}
                 {% endfor %}
                 {% for field in form.visible_fields %}
-                    {{ field.errors }}
-                    {{ field.help_text }}
-                    {{ field }} <br />
+                    {% if field.errors %}
+                        <div class="alert alert-warning">
+                        {{ field.errors }}
+                        </div>
+                    {% endif %}
                 {% endfor %}
-            <input type="submit" name="submit" value="Create Category" /> </form>
+
+                <label for="id_name" class="sr-only">Name</label>
+                <input type="text" id="id_name" maxlength="254"  name="name" class="form-control" placeholder="Name" required autofocus>
+
+            <input class="btn btn-primary btn-block" type="submit" value="Submit" />
+            </form>
         </div>
 {% endblock %}

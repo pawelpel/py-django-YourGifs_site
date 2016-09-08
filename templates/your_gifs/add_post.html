@@ -5,16 +5,31 @@
 {% block body_block %}
     <h1>Add a new Post</h1>
         <div>
-            <form id="post_form" method="post" action="{% url 'add_post'  category.slug %}">
+            <form id="post_form" class="form-signin" method="post" action="{% url 'add_post'  category.slug %}">
+                <h2 class="form-signin-heading">Create a new Post</h2>
                 {% csrf_token %}
                 {% for hidden in form.hidden_fields %}
                     {{ hidden }}
                 {% endfor %}
                 {% for field in form.visible_fields %}
-                    {{ field.errors }}
-                    {{ field.help_text }}
-                    {{ field }} <br />
+                    {% if field.errors %}
+                        <div class="alert alert-warning">
+                        {{ field.errors }}
+                        </div>
+                    {% endif %}
                 {% endfor %}
-            <input type="submit" name="submit" value="Add Post" /> </form>
+
+            <label for="id_title" class="sr-only">Username</label>
+            <input type="text" id="id_title" maxlength="254"  name="title" class="form-control" placeholder="Title" autofocus>
+
+            <label for="id_body" class="sr-only">Text</label>
+            <input type="text" id="id_body" maxlength="254"  name="body" class="form-control" placeholder="Text">
+
+            <label for="id_url" class="sr-only">URL</label>
+            <input type="text" id="id_url" maxlength="254"  name="url" class="form-control" placeholder="URL" required >
+
+            <input class="btn btn-primary btn-block" type="submit" value="Submit" />
+
+            </form>
         </div>
 {% endblock %}

@@ -3,5 +3,33 @@
 {% block title_block %} - Main Page{% endblock %}
 
 {% block body_block %}
-    <h2>It's an index.html page</h2>
+    {% if posts %}
+                <div style="margin: 0 auto;">
+                    {% if posts %}
+                        {% for p in posts %}
+                            <div class="col-md-4">
+                                {#  Crating img or video tag   #}
+                                {% if p.video == True %}<video
+                                {% else %}<img
+                                {% endif %}
+
+                                           class="thumbnail" id="gif_thumbnail"
+                                           data-toggle="tooltip"
+                                           title="{{ p.title }}{% if p.body %} - {{ p.body }}{% endif %}" src="{{ p.url }}"
+
+                                {% if p.video == True %}autoplay loop></video>
+                                {% else %}></img>
+                                {% endif %}
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        <p style="margin: 0 auto; text-align: center;">No posts yet</p>
+                    {% endif %}
+                </div>
+
+    {% else %}
+                <div class="col-md-12 alert alert-warning">
+                    <p>No posts currently in category.</p>
+                </div>
+    {% endif %}
 {% endblock %}

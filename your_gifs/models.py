@@ -22,14 +22,16 @@ class Category(models.Model):
 class Post(models.Model):
 
     creation_date = models.DateField(auto_now=True)
-    title = models.CharField(max_length=128)
+    title = models.CharField(max_length=128, blank=True, null=True)
     body = models.CharField(max_length=1024, blank=True, null=True)
 
     author = models.ForeignKey(User)
     category = models.ForeignKey(Category)
 
     likes = models.IntegerField(default=0)
-    url = models.URLField(blank=True, null=True)
+    url = models.CharField(max_length=256)
+
+    video = models.BooleanField(default=False)
 
     class Meta:
         verbose_name_plural = "Posts"

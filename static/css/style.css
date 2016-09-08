@@ -1,4 +1,40 @@
-#login_form {
+#login_form,
+#regist_form,
+#category_form,
+#post_form,
+#logged_out {
     max-width: 330px;
     margin: 0 auto;
+}
+
+#logged_out {
+    text-align: center;
+}
+
+li .nav-link {
+    color: white;
+}
+
+li .nav-item:hover {
+    background-color: black;
+}
+
+#gif_thumbnail {
+    width: 100%;
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 15px;
+    height: 300px;
+    background-color: #eee;
+    /*border: none;*/
+}
+
+#post_title {
+    height: 45px;
+}
+
+video {
+  object-fit: initial;
+  width: 400px;
+  height: 300px;
 }
