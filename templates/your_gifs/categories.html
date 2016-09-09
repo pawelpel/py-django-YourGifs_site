@@ -30,7 +30,7 @@
                 {% else %}
                     <div id="empty_gif" class="col-md-4">
                         <div class="thumbnail" id="gif_thumbnail" data-toggle="tooltip" title="{{ cat.name }} - No posts yet."></div>
-                        <span id="category_name">{{ cat.name }}</span>
+                        <a href="{% url 'show_category' cat.slug %}"><span id="category_name">{{ cat.name }}</span></a>
                         <span id="gif_info">No posts yet.</span>
                     </div>
                 {% endif %}

@@ -47,8 +47,8 @@
                       <li><a href="{% url 'auth_login' %}">Login</a> </li>
                       <li><a href="{% url 'registration_register' %}">Register</a></li>
                     {% endif %}
-                      <li role="separator" class="divider"></li>
                     {% if user.is_authenticated and categories%}
+                      <li role="separator" class="divider"></li>
                       <li class="dropdown-header">Global Gifs Actions</li>
                       <li><a href="{% url 'add_category' %}">Add Category</a></li>
                       <li><a href="{% url 'show_categories' %}">Add Post</a></li>

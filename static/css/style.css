@@ -69,6 +69,21 @@ video, img {
     margin: 2px;
 }
 
+#category_name-small {
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    background-color: white;
+    opacity: 0.45;
+    color: black;
+    position: absolute;
+    font-size: 13px;
+    top: 20px;
+    left: 20px;
+    padding: 5px;
+    margin: 2px;
+}
+
 #gif_info {
     opacity: 0.9;
     color:black;

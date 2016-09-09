@@ -20,6 +20,7 @@
                                 {% if p.video == True %}autoplay loop></video>
                                 {% else %}></img>
                                 {% endif %}
+                                <a href="{% url 'show_category' p.category.slug %}"><span id="category_name-small">{{ p.category.name }}</span></a>
                             </div>
                         {% endfor %}
                     {% else %}
