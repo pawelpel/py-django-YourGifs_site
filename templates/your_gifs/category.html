@@ -22,7 +22,7 @@
                                 {% else %}<img
                                 {% endif %}
 
-                                           class="thumbnail" id="gif_thumbnail"
+                                           class="thumbnail thumbnail-max" id="gif_thumbnail"
                                            data-toggle="tooltip"
                                            title="{{ p.title }}{% if p.body %} - {{ p.body }}{% endif %}" src="{{ p.url }}"
 
@@ -55,6 +55,6 @@
     });
 </script>
 
-{% block footer_block_more %}
-    <li class="nav-item"><a class="nav-link" href="{% url 'add_post' category.slug %}">Add Post</a></li>
+{% block nav_block_more %}
+    <li><a href="{% url 'add_post' category.slug %}">Add Post to {{ category.name }}</a></li>
 {% endblock %}

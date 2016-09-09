@@ -5,10 +5,9 @@
 
 $(document).ready(function(){
 
-    var gify = $('[data-toggle="tooltip"]');
+    var gif_z_tooltipem = $('[data-toggle="tooltip"]');
 
-    if(gify.title !== ''){
-        gify.tooltip();
+    if(gif_z_tooltipem.title !== ''){
+        gif_z_tooltipem.tooltip();
     }
-
 });

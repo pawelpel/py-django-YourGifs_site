@@ -5,17 +5,46 @@
 {% endblock %}
 
 {% block body_block %}
-    <h2> Categories </h2>
-    {% if categories %}
-        <ul>
-        {% for category in categories %}
-            <li><a href="{% url 'show_category' category.slug %}">{{ category.name }}</a> </li>
-        {% endfor %}
-        </ul>
-    {% else %}
-        There is no categories yet.
-    {% endif %}
-    {% if user.is_authenticated %}
-                <a href="{% url 'add_category' %}">Add a new Category</a> <br/>
-    {% endif %}
+    <div>
+        {% if categories %}
+            {% for cat in categories %}
+                {% if cat in visible_cat %}
+                    {% for p in posts %}
+                        <a href="{% url 'show_category' cat.slug %}">
+                        {% if p.category == cat %}
+                            <div class="col-md-4">
+                                {#  Crating img or video tag   #}
+                                {% if p.video == True %}<video
+                                {% else %}<img
+                                {% endif %}
+                                           class="thumbnail max" id="gif_thumbnail_max"
+                                           data-toggle="tooltip"
+                                           title="{{ cat.name }}" src="{{ p.url }}"
+                                {% if p.video == True %} autoplay loop></video>
+                                {% else %}></img>
+                                {% endif %}
+                                <span id="category_name">{{ cat.name }}</span>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                {% else %}
+                    <div id="empty_gif" class="col-md-4">
+                        <div class="thumbnail" id="gif_thumbnail" data-toggle="tooltip" title="{{ cat.name }} - No posts yet."></div>
+                        <span id="category_name">{{ cat.name }}</span>
+                        <span id="gif_info">No posts yet.</span>
+                    </div>
+                {% endif %}
+                    </a>
+            {% endfor %}
+        {% else %}
+            <div class="col-md-12 alert alert-warning">
+                <p>There is no categories yet.</p>
+            </div>
+        {% endif %}
+    </div>
+
+{% endblock %}
+
+{% block nav_block_more %}
+    <li><a href="{% url 'add_category' %}">Add Category</a></li>
 {% endblock %}

@@ -20,6 +20,7 @@ li .nav-item:hover {
 }
 
 #gif_thumbnail {
+    position: relative;
     width: 100%;
     text-align: center;
     margin: 0 auto;
@@ -29,12 +30,51 @@ li .nav-item:hover {
     /*border: none;*/
 }
 
+#gif_thumbnail_max {
+    position: relative;
+    width: 100%;
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 15px;
+    height: 300px;
+    background-color: #eee;
+    /*border: none;*/
+    object-fit: fill;
+}
+
 #post_title {
     height: 45px;
 }
 
-video {
-  object-fit: initial;
-  width: 400px;
-  height: 300px;
+video, img {
+    object-fit: scale-down;
+}
+
+.tooltip-inner {
+    font-size: 16px;
+}
+
+#category_name {
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    background-color: white;
+    opacity: 0.8;
+    color: black;
+    position: absolute;
+    font-size: 20px;
+    top: 20px;
+    left: 20px;
+    padding: 5px;
+    margin: 2px;
+}
+
+#gif_info {
+    opacity: 0.9;
+    color:black;
+    position: absolute;
+    font-size: 20px;
+    top: 150px;
+    width: 100%;
+    text-align: center;
 }
