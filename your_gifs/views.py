@@ -18,7 +18,14 @@ def index(request):
     return render(request, 'your_gifs/index.html', context=add_to_context(context_dict))
 
 
-def show_categories(request):
+def show_categories(request, req_form_other_site):
+    context_dict = {}
+
+    if int(req_form_other_site) == 1:
+        context_dict['req_form_other_site'] = True
+    else:
+        pass
+
     categories = Category.objects.all().order_by('name')
     posts = []
     for c in categories:
@@ -27,13 +34,17 @@ def show_categories(request):
             posts.append(post[0])
 
     visible_cat = [c for c in categories if c in [p.category for p in posts]]
-    return render(request, 'your_gifs/categories.html', context=add_to_context({'categories': categories,
-                                                                                'posts': posts,
-                                                                                'visible_cat': visible_cat}))
+
+    context_dict['categories'] = categories
+    context_dict['posts'] = posts
+    context_dict['visible_cat'] = visible_cat
+
+    return render(request, 'your_gifs/categories.html', context=add_to_context(context_dict))
 
 
 def show_category(request, category_name_slug):
     context_dict = {}
+
     try:
         category = Category.objects.get(slug=category_name_slug)
         posts = Post.objects.filter(category=category)
@@ -63,6 +74,7 @@ def add_category(request):
 
 @login_required
 def add_post(request, category_name_slug):
+
     try:
         category = Category.objects.get(slug=category_name_slug)
     except Category.DoesNotExist:

@@ -5,7 +5,7 @@
 {% block body_block %}
         <div>
             <form id="post_form" class="form-signin" method="post" action="{% url 'add_post'  category.slug %}">
-                <h2 class="form-signin-heading">Add a new Post in </br>"{{ category.name }}" Category</h2>
+                <h2 class="form-signin-heading">Add a new Post in <br />"{{ category.name }}" Category</h2>
                 {% csrf_token %}
                 {% for hidden in form.hidden_fields %}
                     {{ hidden }}

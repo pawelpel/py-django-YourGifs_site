@@ -7,10 +7,22 @@
 {% block body_block %}
     <div>
         {% if categories %}
+            {% if req_form_other_site %}
+                <div class="col-md-12">
+                    <h2>Chose Category</h2>
+                </div>
+            {% endif %}
+
             {% for cat in categories %}
                 {% if cat in visible_cat %}
                     {% for p in posts %}
-                        <a href="{% url 'show_category' cat.slug %}">
+
+                        {% if req_form_other_site %}
+                            <a href="{% url 'add_post' cat.slug %}">
+                        {% else %}
+                            <a href="{% url 'show_category' cat.slug %}">
+                        {% endif %}
+
                         {% if p.category == cat %}
                             <div class="col-md-4">
                                 {#  Crating img or video tag   #}
@@ -28,13 +40,18 @@
                         {% endif %}
                     {% endfor %}
                 {% else %}
-                    <div id="empty_gif" class="col-md-4">
-                        <div class="thumbnail" id="gif_thumbnail" data-toggle="tooltip" title="{{ cat.name }} - No posts yet."></div>
-                        <a href="{% url 'show_category' cat.slug %}"><span id="category_name">{{ cat.name }}</span></a>
-                        <span id="gif_info">No posts yet.</span>
-                    </div>
-                {% endif %}
+                    {% if req_form_other_site %}
+                        <a href="{% url 'add_post' cat.slug %}">
+                    {% else %}
+                        <a href="{% url 'show_category' cat.slug %}">
+                    {% endif %}
+                        <div id="empty_gif" class="col-md-4">
+                            <div class="thumbnail" id="gif_thumbnail" data-toggle="tooltip" title="{{ cat.name }} - No posts yet."></div>
+                            <span id="category_name">{{ cat.name }}</span>
+                            <span id="gif_info">No posts yet.</span>
+                        </div>
                     </a>
+                {% endif %}
             {% endfor %}
         {% else %}
             <div class="col-md-12 alert alert-warning">

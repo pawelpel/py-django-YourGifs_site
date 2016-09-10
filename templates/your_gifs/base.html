@@ -34,12 +34,12 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
-                <li><a href="{% url 'show_categories' %}">Categories</a></li>
+                <li><a href="{% url 'show_categories' 0 %}">Categories</a></li>
                 {% if user.is_authenticated %}
                     {% block nav_block_more %}{% endblock %}
                 {% endif %}
                 <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-submenu role="button" aria-haspopup="true" aria-expanded="false" aria-labelledby="dLabel">Me<span class="caret"></span></a>
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Me<span class="caret"></span></a>
                   <ul class="dropdown-menu">
                     {% if user.is_authenticated %}
                       <li><a href="{% url 'auth_logout' %}">Logout</a> </li>
@@ -51,12 +51,12 @@
                       <li role="separator" class="divider"></li>
                       <li class="dropdown-header">Global Gifs Actions</li>
                       <li><a href="{% url 'add_category' %}">Add Category</a></li>
-                      <li><a href="{% url 'show_categories' %}">Add Post</a></li>
+                      <li><a href="{% url 'show_categories' 1 %}">Add Post</a></li>
                     {% endif %}
                       <li role="separator" class="divider"></li>
                       <li class="dropdown-header">Additional Account Actions</li>
-                      <li><a href="#">Separated link</a></li>
-                      <li><a href="#">One more separated link</a></li>
+                      <li><a href="{% url 'auth_password_change' %}">Change password</a></li>
+{#                      <li><a href="#">One more separated link</a></li>#}
                   </ul>
                 </li>
               </ul>
@@ -64,7 +64,7 @@
           </div>
         </nav>
 
-    <div class="container" style="margin-top: 50px;">
+    <div class="container" id="body_block" style="margin-top: 50px;">
         {% block body_block %}
 
         {% endblock %}
