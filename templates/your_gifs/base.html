@@ -52,11 +52,13 @@
                       <li class="dropdown-header">Global Gifs Actions</li>
                       <li><a href="{% url 'add_category' %}">Add Category</a></li>
                       <li><a href="{% url 'show_categories' 1 %}">Add Post</a></li>
-                    {% endif %}
+
                       <li role="separator" class="divider"></li>
                       <li class="dropdown-header">Additional Account Actions</li>
                       <li><a href="{% url 'auth_password_change' %}">Change password</a></li>
 {#                      <li><a href="#">One more separated link</a></li>#}
+                      <li><a href="/admin/">Admin panel</a></li>
+                    {% endif %}
                   </ul>
                 </li>
               </ul>

@@ -30,6 +30,11 @@ class PostForm(forms.ModelForm):
         if url and not url.endswith('.gif'):
             cleaned_data['video'] = True
 
+        if url.endswith('.gifv'):
+            url = url[:-5] + '.mp4'
+            cleaned_data['url'] = url
+            cleaned_data['video'] = True
+
         return cleaned_data
 
     class Meta:

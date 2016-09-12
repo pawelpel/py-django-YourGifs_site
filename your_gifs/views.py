@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 
-from your_gifs.forms import CategoryForm, PostForm
-from your_gifs.models import Category, Post
+from .forms import CategoryForm, PostForm
+from .models import Category, Post
 
 
 def add_to_context(context_dict):
@@ -65,7 +65,7 @@ def add_category(request):
         form = CategoryForm(request.POST)
         if form.is_valid():
             form.save(commit=True)
-            return show_categories(request)
+            return show_categories(request, 0)
         else:
             # print(form.errors)
             pass
