@@ -6,10 +6,8 @@ from .models import Category, Post
 
 
 def add_to_context(context_dict):
-    # print(1, context_dict)
     if 'categories' not in context_dict.keys():
         context_dict['categories'] = Category.objects.all()
-    # print(2, context_dict)
     return context_dict
 
 
