@@ -1,3 +1,5 @@
 # py-django-YourGifs_site
 
-Project made to practice django framework
+Small project made to practice django (with django-registration-redux) and bootstrap
+
+
