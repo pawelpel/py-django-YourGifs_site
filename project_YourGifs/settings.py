@@ -71,7 +71,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'project_YourGifs.wsgi.application'
+WSGI_APPLICATION = 'project_yourGifs.wsgi.application'
 
 
 # Database
